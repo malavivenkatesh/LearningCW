@@ -12,8 +12,7 @@ for label=0:9
     k = 1;
     while count < 11
     if Y(k) == label        
-        img =  reshape(X(k,:), 28, 28)';
-        result(:, :, count) = img;
+        result(:, :, count) = reshape(X(k,:), 28, 28)';
 
         count = count + 1;
     end
