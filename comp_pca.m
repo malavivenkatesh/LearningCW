@@ -17,7 +17,7 @@ function [EVecs, EVals] = comp_pca(X)
     
     %calculating the covariance
     N = length(X);
-    covar_m = 1/(N-1)*(X' * X);
+    covar_m = 1/(N)*(X' * X);
     
     %using eig with a now square matrix.
     [PC, V] = eig(covar_m);

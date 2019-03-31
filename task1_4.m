@@ -9,10 +9,11 @@ EVecs = EVecs';
 [rw cw] = size(EVecs);
 result = zeros(28, 28, 1, 12);
 for i=1:10  
-   result(:, :,1, i) = reshape(EVecs(i,:)*255.0, 28, 28)';
+   result(:, :,1, i) = reshape(EVecs(i,:), 28, 28,1)';
 end
 
 result = mat2gray(result);
+%montage(result, 'DisplayRange', [-0.5, 0.5]);
 montage(result);
 
 end

@@ -17,15 +17,14 @@ function [C, idx, SSE] = my_kMeansClustering(X, k, initialCentres, maxIter)
   
   %% TO-DO
   [N, D] = size(X);
-  C_res = zeros(k, N);
+  C = initialCentres;
   idx_prev = zeros(1, N);
-  if k == 1
-
-  end
+  D = zeros(k, N);
+  SSE = zeros(maxIter);
   
   for i=1:maxIter
       for c = 1:k
-          C_res(c,:) = MySqDist(X, initialCentres(c, :));
+          D(c,:) = MySqDist(X, C(c, :));
       end
       
       [Ds, idx] = min(D);
@@ -34,22 +33,23 @@ function [C, idx, SSE] = my_kMeansClustering(X, k, initialCentres, maxIter)
           if ( sum(idx == c) == 0)
               %fprintf('k-means cluster %d is empty', c);
           else
-              initialCentres(c, :) = MyMean(X(idx == c));
+              C(c, :) = MyMean(X(idx == c, :));
           end
       end
       
       if ( sum( abs(idx - idx_prev) ) == 0)
           break;
       end
+      
       idx_prev = idx;
-
-  end
   
+      SSE(i, 1) = sum(Ds);
+%      fprintf('[%d] Iteration: ', i);
+%      C
   
+  SSE(i+1 , 1)= sum(Ds);
+  SSE = SSE(1:i+1);
   
-  C = C_res;
   idx = idx_prev';
-  
-  SSE = sum(Ds);
-  
+
 end

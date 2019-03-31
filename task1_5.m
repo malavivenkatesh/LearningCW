@@ -11,21 +11,19 @@ for i=1:L
     tic
     k = Ks(i);
     initials = zeros(k, D);
+    
     for j=1:k
-        
         initials(j, :) = X(j, :);
-        [C, idx, SSE] = my_kMeansClustering(X, k, initials);
-        
-%        k_string = char(k);
-%        base_name = save_base{1};
-%        c_filename = strcat('task1_5_c_', k_string, '.mat');
-%        idx_filename = sprintf('task1_5_idx_%d.mat', k);
-%        sse_filename = sprintf('task1_5_sse_%d.mat', k);
-%        save(c_filename,  C);
-%        save (idx_filename, idx);
-%        save (sse_filename, SSE);
     end
+    [C, idx, SSE] = my_kMeansClustering(X, k, initials);
+    
     toc
+        c_filename = sprintf('task1_5_c_%d.mat', k);
+        idx_filename = sprintf('task1_5_idx_%d.mat', k);
+        sse_filename = sprintf('task1_5_sse_%d.mat', k);
+        save(c_filename,  'C');
+        save (idx_filename, 'idx');
+        save (sse_filename, 'SSE');
 end
 
 end
