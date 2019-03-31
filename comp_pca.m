@@ -10,7 +10,7 @@ function [EVecs, EVals] = comp_pca(X)
   %% TO-DO
   
     %Calculating the mean mean
-    x_mean = My_Mean(X);
+    x_mean = MyMean(X);
     
     %Subtracting the mean from every value in X
     X = bsxfun(@minus, X, x_mean);
