@@ -29,7 +29,7 @@ pca1 = EVecs(:, 1);
 pca2 = EVecs(:, 2);
 pcas = [pca1, pca2];
 m_proj = (C - posVec)*pcas;
-mean_proj = meanvector*pcas
+mean_proj = meanvector*pcas;
 
 
 xrange = meanvector(1);

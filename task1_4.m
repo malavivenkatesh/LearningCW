@@ -14,7 +14,10 @@ end
 
 result = mat2gray(result);
 %montage(result, 'DisplayRange', [-0.5, 0.5]);
-montage(result);
 
+
+    %filename  = sprintf('task1_4_imgs.pdf');
+    M = montage(result);
+    %saveas(gcf, filename);
 end
 

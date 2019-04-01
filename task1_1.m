@@ -18,7 +18,12 @@ for label=0:9
     end
     k = k + 1;
     end
-    montage(result);
+
+    M = montage(result);
+    
+    %used to save every file
+    %filename  = sprintf('task1_1_imgs_class%d.pdf', (label + 1));
+    %saveas(gcf, filename);
 end
 
 end
