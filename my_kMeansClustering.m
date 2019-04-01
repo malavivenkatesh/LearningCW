@@ -16,11 +16,11 @@ function [C, idx, SSE] = my_kMeansClustering(X, k, initialCentres, maxIter)
   end
   
   %% TO-DO
-  [N, D] = size(X);
+  [N, ~] = size(X);
   C = initialCentres;
   idx_prev = zeros(1, N);
   D = zeros(k, N);
-  SSE = zeros(maxIter);
+  SSE = zeros(maxIter, 1);
   
   for i=1:maxIter
       for c = 1:k
@@ -47,9 +47,9 @@ function [C, idx, SSE] = my_kMeansClustering(X, k, initialCentres, maxIter)
 %      fprintf('[%d] Iteration: ', i);
 %      C
   
+  idx = idx_prev;
+
+  end
+
   SSE(i+1 , 1)= sum(Ds);
   SSE = SSE(1:i+1);
-  
-  idx = idx_prev';
-
-end
